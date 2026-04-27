@@ -1,2 +1,7 @@
-
-Kairoseed: Closed-loop hypothesis generation, evaluation, and evolution system
+ai
+decision-systems
+reinforcement-learning
+evolutionary-algorithms
+agent-systems
+simulation-framework
+research-system
