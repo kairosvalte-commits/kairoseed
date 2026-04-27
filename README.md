@@ -1,2 +1,2 @@
-# kairoseed
-Closed-loop decision evolution system (Kairoseed v0.2)
+
+Kairoseed: Closed-loop hypothesis generation, evaluation, and evolution system
