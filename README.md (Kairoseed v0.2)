@@ -1,0 +1,104 @@
+#  Kairoseed System v0.2
+
+A closed-loop decision evolution system combining:
+- Hypothesis generation (Kairoseed)
+- Weighted evaluation (GSBS)
+- Evolutionary refinement (PEE)
+- Optional safety gating (AGT)
+- Memory-driven learning
+
+---
+
+##  System Overview
+
+Kairoseed is not a model.
+
+It is a **structured decision evolution engine**.
+
+It operates in a continuous loop:
+INPUT → HYPOTHESES → GSBS → PEE → SELECTION → (AGT) → EXECUTION → MEMORY → LOOP
+
+---
+
+##  Core Architecture
+┌────────────────────┐ │     INPUT STATE    │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │     KAIROSEED      │ │ (generate H space) │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │        GSBS        │ │ (score hypotheses) │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │        PEE         │ │ (evolve H space)   │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │     SELECT H*      │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │        AGT         │ │ (optional gate)    │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │   EXECUTION        │ └─────────┬──────────┘ ↓ ┌────────────────────┐ │      MEMORY        │ └────────────────────┘ ↓ LOOP
+
+---
+
+##  Core Components
+
+### 1. KAIROSEED
+Generates hypotheses:
+
+```json
+{
+  "id": "H1",
+  "content": "1 hour daily study"
+}
+GSBS (Scoring System)
+Each hypothesis:
+
+H = [success, stability, cost, risk]
+Score function:
+
+Score(H) =
+(w_s × success) +
+(w_st × stability) -
+(w_c × cost) -
+(w_r × risk)
+Selection:
+
+H* = argmax Score(H)
+3. PEE (Evolution Engine)
+Transforms hypotheses:
+Mutation
+Merge
+Prune
+Rule:
+
+Score(H') ≥ Score(H*) OR novelty(H') > η
+4. AGT (Optional Safety Layer)
+External execution gate:
+allows / denies / modifies actions
+does NOT affect reasoning system
+5. MEMORY
+Stores:
+inputs
+decisions
+outcomes
+weight evolution
+Update rule:
+
+W_{t+1} = W_t + α (R_actual - R_predicted)
+ Real-World Positioning
+Kairoseed is:
+A structured decision evolution framework for adaptive reasoning systems.
+Use cases:
+learning systems
+decision agents
+behavioral modeling
+planning engines
+ Design Philosophy
+Kairoseed is:
+✔ deterministic in structure
+✔ adaptive in weights
+✔ evolutionary in search space
+✔ feedback-driven in learning
+It is NOT:
+a black-box AI model
+an LLM wrapper
+a static rule engine
+Run Example
+Python
+from examples.study_agent import run
+
+run("study coding daily")
+ Structure
+
+core/       → logic engine
+models/     → data structures
+memory/     → learning system
+safety/     → AGT bridge (optional)
+examples/   → demos
+tests/      → validation
+docs/       → theory
