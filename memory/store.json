@@ -1,0 +1,11 @@
+{
+  "current_weights": {
+    "success": 0.4,
+    "stability": 0.3,
+    "cost": 0.2,
+    "risk": 0.1
+  },
+  "weights_history": [],
+  "decision_history": [],
+  "learning_rate": 0.1
+}
